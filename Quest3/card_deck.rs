@@ -1,3 +1,5 @@
+use rand::prelude::*;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Card {
     pub suit: Suit,
@@ -23,7 +25,7 @@ pub enum Rank {
 
 impl Suit {
     pub fn random() -> Suit {
-        match rand::random::<u8>() % 4 + 1 {
+        match rand::thread_rng().gen_range(1..=4) {
             1 => Suit::Heart,
             2 => Suit::Diamond,
             3 => Suit::Club,
@@ -45,7 +47,7 @@ impl Suit {
 
 impl Rank {
     pub fn random() -> Rank {
-        let n = rand::random::<u8>() % 13 + 1;
+        let n = rand::thread_rng().gen_range(1..=4);
         match n {
             1 => Rank::Ace,
             13 => Rank::King,
