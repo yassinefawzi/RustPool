@@ -4,7 +4,6 @@ pub fn rpn(input: &str) {
     for token in input.split_whitespace() {
         match token {
             "+" | "-" | "*" | "/" | "%" => {
-                // Need at least 2 numbers to operate
                 if stack.len() < 2 {
                     println!("Error");
                     return;
@@ -34,7 +33,6 @@ pub fn rpn(input: &str) {
                 stack.push(res);
             }
             number => {
-                // Try to parse number
                 match number.parse::<i64>() {
                     Ok(n) => stack.push(n),
                     Err(_) => {
